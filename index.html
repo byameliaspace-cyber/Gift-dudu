@@ -1,0 +1,678 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Papi Uno's Birthday Story</title>
+<style>
+  /*
+    Layout concept: one full-height "stage" that swaps between seven
+    scenes (seal -> distance -> the dare -> why he's special -> our
+    memories -> through the years -> the reveal). Egypt's gold and
+    Indonesia's rose sit together on a charcoal ground; grey marks
+    anything that's "his", pink marks anything that's "hers".
+  */
+  :root {
+    --bg: #1a1720;
+    --bg-deep: #100e15;
+    --panel: #272130;
+    --panel-soft: #312a3a;
+    --gold: #d4af6a;
+    --gold-soft: #ecd4a0;
+    --pink: #e98fa6;
+    --pink-soft: #f6cdd9;
+    --grey: #aea8b8;
+    --grey-soft: #cfc9d6;
+    --text: #f6f1e9;
+    --text-soft: #cabfce;
+    --line: rgba(212, 175, 106, 0.28);
+    --font-display: "Marcellus", "Noto Serif", serif;
+    --font-body: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-hand: "Caveat", cursive;
+    --font-arabic: "Amiri", "Noto Naskh Arabic", serif;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+
+  body {
+    font-family: var(--font-body);
+    background: radial-gradient(130% 90% at 50% -10%, var(--panel-soft) 0%, var(--bg) 45%, var(--bg-deep) 100%);
+    color: var(--text);
+    overflow: hidden;
+    position: relative;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: max(14px, env(safe-area-inset-top, 0px)) max(14px, env(safe-area-inset-bottom, 0px));
+  }
+
+  #hearts {
+    position: fixed; inset: 0;
+    pointer-events: none; overflow: hidden; z-index: 0;
+  }
+  .heart {
+    position: absolute; bottom: -10%;
+    opacity: 0.4; color: var(--gold);
+    animation: float-up linear infinite;
+  }
+  @keyframes float-up {
+    from { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10%  { opacity: 0.4; }
+    90%  { opacity: 0.3; }
+    to   { transform: translateY(-115vh) rotate(20deg); opacity: 0; }
+  }
+
+  .stage {
+    position: relative; z-index: 1;
+    height: 100%; width: 100%; max-width: 520px; margin: 0 auto;
+  }
+
+  section.scene {
+    height: 100%; width: 100%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; animation: fade-in 0.5s ease both;
+    gap: 14px;
+  }
+  section.scene[hidden] { display: none !important; }
+
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  h1, h2, h3 { font-family: var(--font-display); margin: 0; text-wrap: balance; }
+
+  .eyebrow {
+    font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--gold); font-weight: 700; margin: 0;
+  }
+
+  .nav-next {
+    position: fixed;
+    right: max(18px, calc(env(safe-area-inset-right, 0px) + 10px));
+    bottom: max(20px, calc(env(safe-area-inset-bottom, 0px) + 16px));
+    z-index: 5;
+    width: 54px; height: 54px; border-radius: 50%;
+    background: var(--gold); color: var(--bg-deep);
+    border: none; font-size: 22px; cursor: pointer;
+    box-shadow: 0 10px 24px -8px rgba(212,175,106,0.6);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .nav-next:focus-visible { outline: 3px solid var(--pink); outline-offset: 3px; }
+  .nav-next[hidden] { display: none !important; }
+
+  .dots {
+    position: fixed;
+    left: 50%; transform: translateX(-50%);
+    bottom: max(16px, calc(env(safe-area-inset-bottom, 0px) + 8px));
+    display: flex; gap: 6px; z-index: 5;
+  }
+  .dots span {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(212,175,106,0.3);
+  }
+  .dots span.active { background: var(--gold); }
+
+  /* ---------- s0: seal ---------- */
+  #seal-btn {
+    width: 150px; height: 150px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, var(--gold-soft), var(--gold) 55%, #9c7a3e 100%);
+    border: none; color: var(--bg-deep); font-family: var(--font-display);
+    font-size: 20px; cursor: pointer; box-shadow: 0 20px 50px -18px rgba(212,175,106,0.7);
+    display: flex; align-items: center; justify-content: center; padding: 10px;
+  }
+  #seal-btn:focus-visible { outline: 3px solid var(--pink); outline-offset: 4px; }
+  .seal-sub { color: var(--text-soft); font-size: 14px; max-width: 280px; }
+
+  /* ---------- s1: distance ---------- */
+  .flags-row { display: flex; align-items: center; gap: 16px; justify-content: center; }
+  .flag {
+    width: 54px; height: 38px; border-radius: 4px; overflow: hidden;
+    box-shadow: 0 6px 16px -6px rgba(0,0,0,0.5); display: flex; flex-direction: column;
+  }
+  .flag span { flex: 1; }
+  .flag.id span:first-child { background: #cf1b2b; }
+  .flag.id span:last-child { background: #f5f0e6; }
+  .flag.eg { flex-direction: column; }
+  .flag.eg span:nth-child(1) { background: #cf1b2b; }
+  .flag.eg span:nth-child(2) { background: #f5f0e6; }
+  .flag.eg span:nth-child(3) { background: #1a1a1a; }
+  .flag-link { font-size: 24px; color: var(--gold-soft); }
+  .distance-caption { font-size: 15.5px; color: var(--text-soft); max-width: 300px; line-height: 1.6; }
+  .distance-caption strong { color: var(--gold-soft); }
+  .pyramid-row { display: flex; gap: 10px; align-items: flex-end; opacity: 0.8; margin-top: 2px; }
+  .pyramid-row svg { width: 44px; height: 32px; }
+
+  /* ---------- chubby bear mascots ---------- */
+  .bear-duo { display: flex; align-items: flex-end; gap: 6px; margin-top: 4px; }
+  .bear-duo svg { width: 72px; height: 86px; }
+  .bear-duo .mid-heart { font-size: 20px; color: var(--pink); align-self: center; margin: 0 2px 16px; }
+  .bear-bounce { animation: bear-bob 2.6s ease-in-out infinite; }
+  .bear-bounce.delay { animation-delay: 0.5s; }
+  @keyframes bear-bob {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-6px) rotate(-2deg); }
+  }
+  .bear-hug { display: flex; justify-content: center; margin: 2px 0 6px; }
+  .bear-hug svg { width: 64px; height: 76px; }
+  .bear-hug svg:first-child { margin-right: -14px; transform: rotate(-4deg); }
+  .bear-hug svg:last-child { margin-left: -14px; transform: rotate(4deg); }
+  @media (prefers-reduced-motion: reduce) {
+    .bear-bounce, .bear-bounce.delay { animation: none; }
+  }
+
+  /* ---------- s2: the dare ---------- */
+  .question { font-size: clamp(34px, 11vw, 48px); color: var(--text); line-height: 1.1; }
+  .taunt { min-height: 1.4em; font-size: 13.5px; color: var(--pink-soft); margin: 0; }
+  #dare-field { position: relative; width: 100%; height: min(230px, 34vh); }
+  .choice-btn {
+    font-family: var(--font-body); font-weight: 800; font-size: 17px;
+    border: none; border-radius: 999px; padding: 13px 26px; cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  #yes-btn {
+    position: absolute; top: 0; left: 50%;
+    transform: translate(-50%, 0) scale(var(--yes-scale, 1));
+    background: var(--pink); color: #2a1018;
+    box-shadow: 0 10px 22px -8px rgba(233,143,166,0.6);
+    transition: transform 0.25s cubic-bezier(.34,1.56,.64,1);
+  }
+  #no-btn {
+    position: absolute; top: 65%; left: 50%;
+    transform: translate(-50%, -50%) scale(var(--no-scale, 1));
+    background: transparent; color: var(--grey-soft); border: 2px solid var(--grey);
+    transition: top 0.22s ease, left 0.22s ease, transform 0.22s ease;
+  }
+  .choice-btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+  .dare-counter { font-size: 12px; color: var(--text-soft); }
+
+  /* ---------- s3: why special cards ---------- */
+  .card-deck {
+    width: 100%; display: flex; gap: 12px; overflow-x: auto;
+    scroll-snap-type: x mandatory; padding: 6px 4px 10px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .flip-card {
+    flex: 0 0 auto; width: 198px; height: 250px; scroll-snap-align: center;
+    perspective: 1000px;
+  }
+  .flip-inner {
+    position: relative; width: 100%; height: 100%; text-align: left;
+    transition: transform 0.55s cubic-bezier(.4,.2,.2,1); transform-style: preserve-3d;
+  }
+  .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+  .flip-front, .flip-back {
+    position: absolute; inset: 0; backface-visibility: hidden;
+    border-radius: 18px; padding: 18px; display: flex; flex-direction: column;
+    justify-content: center; gap: 8px; border: 1px solid var(--line);
+  }
+  .flip-front {
+    background:
+      repeating-linear-gradient(0deg, rgba(122,92,47,0.08) 0px, rgba(122,92,47,0.08) 1px, transparent 1px, transparent 5px),
+      repeating-linear-gradient(90deg, rgba(122,92,47,0.05) 0px, rgba(122,92,47,0.05) 1px, transparent 1px, transparent 7px),
+      linear-gradient(160deg, #e9d9b3, #d9c190);
+    align-items: center; text-align: center; color: #4a3a22;
+    border-color: rgba(122,92,47,0.35);
+  }
+  .flip-front .num { font-family: var(--font-display); font-size: 34px; color: #7a5c2f; }
+  .flip-front .hint { font-size: 12px; color: #6b5a3c; }
+  .flip-front .pyramid { width: 46px; height: 32px; opacity: 0.75; }
+  .flip-back {
+    background: linear-gradient(160deg, var(--pink-soft), #e3b2c5);
+    color: #2a1018; transform: rotateY(180deg);
+  }
+  .flip-back h3 { font-size: 18px; color: #7a2140; }
+  .flip-back p { font-size: 13.5px; line-height: 1.45; margin: 0; }
+  .deck-hint { font-size: 12.5px; color: var(--text-soft); }
+
+  /* ---------- s4 / s5: photo galleries ---------- */
+  .gallery-title { font-size: 14px; color: var(--text-soft); max-width: 300px; }
+  .gallery {
+    width: 100%; display: flex; gap: 14px; overflow-x: auto;
+    scroll-snap-type: x mandatory; padding: 8px 20px 14px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .polaroid {
+    flex: 0 0 auto; width: 210px; scroll-snap-align: center;
+    background: #faf6ef; border-radius: 4px; padding: 10px 10px 16px;
+    box-shadow: 0 14px 30px -14px rgba(0,0,0,0.55);
+    transform: rotate(var(--tilt, -2deg));
+  }
+  .polaroid img {
+    width: 100%; height: 230px; object-fit: var(--fit, cover);
+    background: #efe7d6; border-radius: 2px; display: block;
+  }
+  .polaroid figcaption {
+    font-family: var(--font-hand); font-size: 18px; color: #3a2a30;
+    margin-top: 8px; line-height: 1.25;
+  }
+  .swipe-hint { font-size: 12px; color: var(--text-soft); }
+
+  /* ---------- s6: the reveal ---------- */
+  .party-card {
+    background: linear-gradient(170deg, var(--panel-soft), var(--panel));
+    border: 1px solid var(--line);
+    border-radius: 26px; padding: 30px 24px 26px; max-width: 420px;
+    box-shadow: 0 30px 70px -24px rgba(0,0,0,0.6);
+  }
+  .party-title { font-size: clamp(30px, 9vw, 42px); color: var(--gold-soft); margin-bottom: 4px; }
+  .arabic-line {
+    font-family: var(--font-arabic); direction: rtl; font-size: 26px;
+    color: var(--pink-soft); margin: 4px 0 2px;
+  }
+  .id-line { font-family: var(--font-hand); font-size: 22px; color: var(--grey-soft); margin: 0 0 14px; }
+  .party-note { font-size: 15px; line-height: 1.65; text-align: left; color: var(--text); margin: 0 0 14px; }
+  .party-note strong { color: var(--gold-soft); }
+  .dua-line { font-size: 13.5px; color: var(--text-soft); text-align: left; margin: 0 0 18px; line-height: 1.6; }
+  .signoff { font-family: var(--font-hand); font-size: 24px; color: var(--pink-soft); margin: 0 0 20px; }
+  .again-btn {
+    font-family: var(--font-body); font-weight: 700; font-size: 13.5px;
+    color: var(--bg-deep); background: var(--gold); border: none;
+    border-radius: 999px; padding: 10px 20px; cursor: pointer;
+  }
+  .again-btn:focus-visible { outline: 3px solid var(--pink); outline-offset: 2px; }
+
+  #confetti { position: fixed; inset: 0; z-index: 3; pointer-events: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .heart { animation: none; opacity: 0.2; bottom: 10%; }
+    section.scene { animation: none; }
+  }
+</style>
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Amiri:wght@400;700&family=Caveat:wght@600;700&family=Nunito:wght@500;600;700;800&display=swap">
+
+<div id="hearts" aria-hidden="true"></div>
+
+<div class="stage">
+
+  <!-- s0 : seal -->
+  <section class="scene" id="s0">
+    <p class="eyebrow">A story, just for you</p>
+    <button id="seal-btn" type="button">Open for<br>Papi Uno</button>
+    <p class="seal-sub">Six chapters. One very special birthday.</p>
+  </section>
+
+  <!-- s1 : distance -->
+  <section class="scene" id="s1" hidden>
+    <p class="eyebrow">Chapter One</p>
+    <h2>Two Countries, One Heart</h2>
+    <div class="flags-row">
+      <div class="flag id"><span></span><span></span></div>
+      <span class="flag-link">&#8594;</span>
+      <div class="flag eg"><span></span><span></span><span></span></div>
+    </div>
+    <p class="distance-caption">
+      <strong>6,900 km</strong> between Jakarta and Egypt.
+      Somehow it has never once felt like a distance —
+      it just feels like <strong>home, twice.</strong>
+    </p>
+    <div class="pyramid-row" aria-hidden="true">
+      <svg viewBox="0 0 60 40"><polygon points="30,2 56,38 4,38" fill="var(--gold)"/><polygon points="30,2 56,38 30,38" fill="var(--gold-soft)" opacity="0.5"/></svg>
+      <svg viewBox="0 0 60 40"><polygon points="30,10 50,38 10,38" fill="var(--gold-soft)" opacity="0.7"/></svg>
+      <svg viewBox="0 0 60 40"><polygon points="30,2 56,38 4,38" fill="var(--gold)"/><polygon points="30,2 56,38 30,38" fill="var(--gold-soft)" opacity="0.5"/></svg>
+    </div>
+    <div class="bear-duo" id="bear-duo-distance" aria-hidden="true"></div>
+  </section>
+
+  <!-- s2 : the dare -->
+  <section class="scene" id="s2" hidden>
+    <p class="eyebrow">Chapter Two</p>
+    <h2 class="question">Do you love me?</h2>
+    <p class="taunt" id="taunt"></p>
+    <div id="dare-field">
+      <button id="yes-btn" class="choice-btn" type="button">Yes, with my whole heart</button>
+      <button id="no-btn" class="choice-btn" type="button">No</button>
+    </div>
+    <p class="dare-counter" id="dare-counter"></p>
+  </section>
+
+  <!-- s3 : why special -->
+  <section class="scene" id="s3" hidden>
+    <p class="eyebrow">Chapter Three</p>
+    <h2>Why You, Papi Uno</h2>
+    <div class="card-deck" id="card-deck"></div>
+    <p class="deck-hint">tap a card to reveal</p>
+  </section>
+
+  <!-- s4 : our memories -->
+  <section class="scene" id="s4" hidden>
+    <p class="eyebrow">Chapter Four</p>
+    <h2>Our Memories</h2>
+    <p class="gallery-title">A few of the moments I keep replaying.</p>
+    <div class="gallery" id="gallery-us"></div>
+    <p class="swipe-hint">swipe for more &#8594;</p>
+  </section>
+
+  <!-- s5 : through the years -->
+  <section class="scene" id="s5" hidden>
+    <p class="eyebrow">Chapter Five</p>
+    <h2>Through the Years</h2>
+    <p class="gallery-title">From a little boy in Egypt to the man I fell for.</p>
+    <div class="gallery" id="gallery-years"></div>
+    <p class="swipe-hint">swipe for more &#8594;</p>
+  </section>
+
+  <!-- s6 : the reveal -->
+  <section class="scene" id="s6" hidden>
+    <article class="party-card">
+      <p class="eyebrow" style="color:var(--pink-soft)">Chapter Six</p>
+      <h2 class="party-title">Happy Birthday,<br>Papi Uno</h2>
+      <div class="bear-hug" id="bear-hug-reveal" aria-hidden="true"></div>
+      <p class="arabic-line">كل سنة وإنت طيب يا حبيبي</p>
+      <p class="id-line">Selamat ulang tahun, sayangku.</p>
+      <p class="party-note">
+        You're the <strong>calm, wise</strong> one in every storm —
+        the kind of man my family already adores, because somehow your
+        heart beats on the same wavelength as theirs. You make me laugh
+        when I least expect it, you're effortlessly <strong>cool</strong>
+        without ever trying, and you show affection so openly that I
+        never once feel like I'm loving you alone. And yes — you spoil
+        me rotten. I'm not even a little sorry about enjoying it.
+      </p>
+      <p class="dua-line">
+        Semoga Allah selalu menjaga langkahmu, memudahkan setiap rencanamu,
+        dan memberimu umur yang panjang penuh berkah. اللهم بارك له في عمره
+        وارزقه الصحة والسعادة. I pray every year gets softer and kinder
+        for you — I plan on being there for all of them.
+      </p>
+      <p class="signoff">All my love, always yours, Amelia.</p>
+      <button class="again-btn" id="replay-btn" type="button">Read it again</button>
+    </article>
+  </section>
+
+</div>
+
+<button class="nav-next" id="nav-next" type="button" aria-label="Next">&#8594;</button>
+<div class="dots" id="dots"></div>
+<canvas id="confetti"></canvas>
+
+<script>
+(function () {
+  "use strict";
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var scenes = ["s0","s1","s2","s3","s4","s5","s6"];
+  var current = 0;
+  var navNext = document.getElementById("nav-next");
+  var dotsWrap = document.getElementById("dots");
+
+  scenes.forEach(function () {
+    var d = document.createElement("span");
+    dotsWrap.appendChild(d);
+  });
+
+  function renderDots() {
+    Array.prototype.forEach.call(dotsWrap.children, function (d, i) {
+      d.className = i === current ? "active" : "";
+    });
+  }
+
+  function showScene(i, opts) {
+    opts = opts || {};
+    document.getElementById(scenes[current]).hidden = true;
+    current = i;
+    document.getElementById(scenes[current]).hidden = false;
+    renderDots();
+    navNext.hidden = (scenes[current] === "s2" || scenes[current] === "s6");
+    if (scenes[current] === "s6" && !opts.skipConfetti) burstConfetti();
+  }
+
+  navNext.addEventListener("click", function () {
+    if (current < scenes.length - 1) showScene(current + 1);
+  });
+
+  document.getElementById("seal-btn").addEventListener("click", function () {
+    showScene(1);
+  });
+
+  /* ---------- ambient hearts ---------- */
+  (function spawnHearts() {
+    var layer = document.getElementById("hearts");
+    var count = reduceMotion ? 6 : 12;
+    for (var i = 0; i < count; i++) {
+      var h = document.createElement("div");
+      h.className = "heart";
+      h.textContent = ["♥", "✿", "▲"][(Math.random() * 3) | 0];
+      h.style.left = (Math.random() * 100) + "%";
+      h.style.fontSize = (12 + Math.random() * 14) + "px";
+      if (!reduceMotion) {
+        h.style.animationDuration = (10 + Math.random() * 10) + "s";
+        h.style.animationDelay = (-Math.random() * 14) + "s";
+      }
+      layer.appendChild(h);
+    }
+  })();
+
+  /* ---------- s2: the unreachable "No" ---------- */
+  var field = document.getElementById("dare-field");
+  var noBtn = document.getElementById("no-btn");
+  var yesBtn = document.getElementById("yes-btn");
+  var taunt = document.getElementById("taunt");
+  var counterEl = document.getElementById("dare-counter");
+  var dodgeCount = 0;
+
+  var taunts = [
+    "Nggak bisa kabur, kamu cuma boleh pencet Ya, Papi Uno.",
+    "Not today. Only Yes is allowed here.",
+    "Nice try. Still unclickable.",
+    "That button is purely decorative at this point.",
+    "Nope. Try the other one.",
+    "Some things just aren't up for debate."
+  ];
+
+  function randomSpot() {
+    var w = field.clientWidth, h = field.clientHeight;
+    var bw = noBtn.offsetWidth || 110, bh = noBtn.offsetHeight || 46;
+    var padX = bw / 2 + 6, padY = bh / 2 + 6;
+    return {
+      x: padX + Math.random() * Math.max(1, w - padX * 2),
+      y: padY + Math.random() * Math.max(1, h - padY * 2)
+    };
+  }
+
+  function dodge() {
+    var spot = randomSpot();
+    noBtn.style.left = spot.x + "px";
+    noBtn.style.top = spot.y + "px";
+    dodgeCount++;
+    counterEl.textContent = dodgeCount >= 3 ? "Attempt #" + dodgeCount : "";
+    taunt.textContent = taunts[Math.min(dodgeCount - 1, taunts.length - 1)];
+    var yesScale = Math.min(1.3, 1 + dodgeCount * 0.03);
+    var noScale = Math.max(0.6, 1 - dodgeCount * 0.03);
+    document.documentElement.style.setProperty("--yes-scale", yesScale.toFixed(2));
+    document.documentElement.style.setProperty("--no-scale", noScale.toFixed(2));
+  }
+
+  window.addEventListener("load", function () {
+    var spot = randomSpot();
+    noBtn.style.left = spot.x + "px";
+    noBtn.style.top = spot.y + "px";
+  });
+
+  field.addEventListener("pointermove", function (e) {
+    if (e.pointerType === "touch") return;
+    var rect = noBtn.getBoundingClientRect();
+    var dist = Math.hypot(e.clientX - (rect.left + rect.width / 2), e.clientY - (rect.top + rect.height / 2));
+    if (dist < 85) dodge();
+  });
+  ["pointerdown", "touchstart", "click"].forEach(function (evt) {
+    noBtn.addEventListener(evt, function (e) { e.preventDefault(); dodge(); }, { passive: false });
+  });
+  noBtn.addEventListener("mouseenter", dodge);
+
+  yesBtn.addEventListener("click", function () { showScene(3); });
+
+  /* ---------- s3: why special cards ---------- */
+  var reasons = [
+    { t: "Mature, wise beyond his years", b: "He's the calm, steady one — the kind of wisdom that makes everything feel less heavy." },
+    { t: "Shares my family's values", b: "The kind of man my parents already adore, because his heart beats on their wavelength too." },
+    { t: "That humor", b: "He makes me laugh exactly when I need it most, without even trying." },
+    { t: "Cool, calm, unmistakably him", b: "Effortlessly manly — never performing it, just being it." },
+    { t: "Sweet in the quiet moments", b: "He shows affection out loud and often. I never feel like I'm loving him alone." },
+    { t: "Generous to a fault", b: "He spoils me rotten. I'm not even a little sorry about enjoying it." }
+  ];
+  var deck = document.getElementById("card-deck");
+  reasons.forEach(function (r, i) {
+    var card = document.createElement("div");
+    card.className = "flip-card";
+    card.innerHTML =
+      '<div class="flip-inner">' +
+        '<div class="flip-front"><svg class="pyramid" viewBox="0 0 60 40"><polygon points="30,4 54,36 6,36" fill="#7a5c2f" opacity="0.55"/></svg><span class="num">' + String(i + 1).padStart(2, "0") + '</span><span class="hint">reason ' + (i + 1) + '</span></div>' +
+        '<div class="flip-back"><h3>' + r.t + '</h3><p>' + r.b + '</p></div>' +
+      '</div>';
+    card.addEventListener("click", function () { card.classList.toggle("flipped"); });
+    deck.appendChild(card);
+  });
+
+  /* ---------- chubby bear mascots (original, not any existing character) ---------- */
+  function bearSvg(opts) {
+    var body = opts.body, belly = opts.belly, accent = opts.accent, accentType = opts.accentType, tall = opts.tall;
+    var bodyRy = tall ? 42 : 36, bodyCy = tall ? 80 : 76, headR = tall ? 24 : 27, headCy = tall ? 34 : 37;
+    var accentMark = accentType === "scarf"
+      ? '<path d="M30,' + (headCy + headR - 4) + ' Q50,' + (headCy + headR + 8) + ' 70,' + (headCy + headR - 4) + '" fill="none" stroke="' + accent + '" stroke-width="7" stroke-linecap="round"/>'
+      : '<ellipse cx="30" cy="' + (headCy - headR + 1) + '" rx="7" ry="5" fill="' + accent + '"/><circle cx="30" cy="' + (headCy - headR + 1) + '" r="2" fill="#7a2140"/>';
+    return '' +
+      '<svg viewBox="0 0 100 120" xmlns="http://www.w3.org/2000/svg">' +
+        '<ellipse cx="50" cy="' + bodyCy + '" rx="32" ry="' + bodyRy + '" fill="' + body + '"/>' +
+        '<ellipse cx="50" cy="' + (bodyCy + 6) + '" rx="18" ry="' + (bodyRy - 10) + '" fill="' + belly + '"/>' +
+        '<ellipse cx="18" cy="' + (bodyCy + 4) + '" rx="10" ry="15" fill="' + body + '"/>' +
+        '<ellipse cx="82" cy="' + (bodyCy + 4) + '" rx="10" ry="15" fill="' + body + '"/>' +
+        '<ellipse cx="38" cy="' + (bodyCy + bodyRy + 2) + '" rx="11" ry="8" fill="' + body + '"/>' +
+        '<ellipse cx="62" cy="' + (bodyCy + bodyRy + 2) + '" rx="11" ry="8" fill="' + body + '"/>' +
+        '<circle cx="28" cy="' + (headCy - headR + 4) + '" r="11" fill="' + body + '"/>' +
+        '<circle cx="72" cy="' + (headCy - headR + 4) + '" r="11" fill="' + body + '"/>' +
+        '<circle cx="28" cy="' + (headCy - headR + 4) + '" r="5.5" fill="' + belly + '"/>' +
+        '<circle cx="72" cy="' + (headCy - headR + 4) + '" r="5.5" fill="' + belly + '"/>' +
+        '<circle cx="50" cy="' + headCy + '" r="' + headR + '" fill="' + body + '"/>' +
+        '<ellipse cx="38" cy="' + (headCy + 10) + '" rx="6" ry="4.2" fill="#f2a9bb" opacity="0.8"/>' +
+        '<ellipse cx="62" cy="' + (headCy + 10) + '" rx="6" ry="4.2" fill="#f2a9bb" opacity="0.8"/>' +
+        '<path d="M38,' + (headCy - 2) + ' Q40,' + (headCy + 1) + ' 42,' + (headCy - 2) + '" fill="none" stroke="#3a2a22" stroke-width="2.4" stroke-linecap="round"/>' +
+        '<path d="M58,' + (headCy - 2) + ' Q60,' + (headCy + 1) + ' 62,' + (headCy - 2) + '" fill="none" stroke="#3a2a22" stroke-width="2.4" stroke-linecap="round"/>' +
+        '<ellipse cx="50" cy="' + (headCy + 7) + '" rx="3.4" ry="2.6" fill="#3a2a22"/>' +
+        '<path d="M44,' + (headCy + 13) + ' Q50,' + (headCy + 17) + ' 56,' + (headCy + 13) + '" fill="none" stroke="#3a2a22" stroke-width="2" stroke-linecap="round"/>' +
+        accentMark +
+      '</svg>';
+  }
+
+  var brownBear = bearSvg({ body: "#9a6a3e", belly: "#f1dcb8", accent: "#aea8b8", accentType: "scarf", tall: true });
+  var whiteBear = bearSvg({ body: "#f4ece0", belly: "#ffffff", accent: "#e98fa6", accentType: "bow", tall: false });
+
+  var distanceDuo = document.getElementById("bear-duo-distance");
+  if (distanceDuo) {
+    distanceDuo.innerHTML =
+      '<span class="bear-bounce">' + brownBear + '</span>' +
+      '<span class="mid-heart">&#8226;</span>' +
+      '<span class="bear-bounce delay">' + whiteBear + '</span>';
+  }
+  var hugDuo = document.getElementById("bear-hug-reveal");
+  if (hugDuo) {
+    hugDuo.innerHTML = brownBear + whiteBear;
+  }
+
+  /* ---------- s4 / s5: galleries ---------- */
+  var usPhotos = [
+    { src: "images/family.jpg", cap: "The day he met my family — and somehow felt like he'd always been part of it.", fit: "contain" },
+    { src: "images/car.jpg", cap: "My favorite kind of photo. Just us." },
+    { src: "images/redcurtain.jpg", cap: "Dressed up, same team, every time.", fit: "contain" },
+    { src: "images/heart-hands.png", cap: "Two hearts, one frame." },
+    { src: "images/holding-hands.png", cap: "Still holding on. Still choosing you." },
+    { src: "images/mirror.jpg", cap: "Ordinary day, extraordinary company." }
+  ];
+  var yearsPhotos = [
+    { src: "images/portrait.jpg", cap: "Before I knew him. Before the world knew what it was getting." },
+    { src: "images/baby.jpg", cap: "Young Ayman — already carrying that same quiet confidence." },
+    { src: "images/headphones.jpg", cap: "Lost in his own world. Some things never change." },
+    { src: "images/beach.jpg", cap: "Growing into the man I fell for." },
+    { src: "images/temple.jpg", cap: "Egypt runs through him — history, roots, quiet strength." }
+  ];
+
+  function fillGallery(id, photos) {
+    var wrap = document.getElementById(id);
+    photos.forEach(function (p, i) {
+      var fig = document.createElement("figure");
+      fig.className = "polaroid";
+      fig.style.setProperty("--tilt", (i % 2 === 0 ? -2 : 2) + "deg");
+      var img = document.createElement("img");
+      img.src = p.src;
+      img.alt = p.cap;
+      img.loading = "lazy";
+      if (p.fit) img.style.setProperty("--fit", p.fit);
+      var cap = document.createElement("figcaption");
+      cap.textContent = p.cap;
+      fig.appendChild(img);
+      fig.appendChild(cap);
+      wrap.appendChild(fig);
+    });
+  }
+  fillGallery("gallery-us", usPhotos);
+  fillGallery("gallery-years", yearsPhotos);
+
+  /* ---------- s6: replay ---------- */
+  document.getElementById("replay-btn").addEventListener("click", function () {
+    dodgeCount = 0;
+    counterEl.textContent = "";
+    taunt.textContent = "";
+    document.documentElement.style.setProperty("--yes-scale", 1);
+    document.documentElement.style.setProperty("--no-scale", 1);
+    showScene(0, { skipConfetti: true });
+  });
+
+  /* ---------- confetti ---------- */
+  var canvas = document.getElementById("confetti");
+  var ctx = canvas.getContext("2d");
+  var pieces = [];
+  var confettiRunning = false;
+  var colors = ["#d4af6a", "#e98fa6", "#faf6ef", "#aea8b8", "#7a2140"];
+
+  function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+  window.addEventListener("resize", resizeCanvas);
+  resizeCanvas();
+
+  function burstConfetti() {
+    if (reduceMotion) return;
+    pieces = [];
+    for (var i = 0; i < 90; i++) {
+      pieces.push({
+        x: Math.random() * canvas.width, y: -20 - Math.random() * canvas.height * 0.5,
+        r: 4 + Math.random() * 5, c: colors[(Math.random() * colors.length) | 0],
+        vy: 1.5 + Math.random() * 2.2, vx: -1 + Math.random() * 2,
+        rot: Math.random() * Math.PI, vr: -0.1 + Math.random() * 0.2
+      });
+    }
+    if (!confettiRunning) { confettiRunning = true; requestAnimationFrame(tick); }
+    setTimeout(function () { confettiRunning = false; }, 5200);
+  }
+
+  function tick() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    var alive = false;
+    for (var i = 0; i < pieces.length; i++) {
+      var p = pieces[i];
+      if (p.y > canvas.height + 30) continue;
+      alive = true;
+      p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot);
+      ctx.fillStyle = p.c; ctx.fillRect(-p.r / 2, -p.r / 2, p.r, p.r * 1.6);
+      ctx.restore();
+    }
+    if (alive && confettiRunning) requestAnimationFrame(tick);
+    else ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
+  renderDots();
+  navNext.hidden = false;
+
+  /* ---------- hot reload for open viewers ---------- */
+  function start(saved) {
+    if (saved && typeof saved.scene === "number" && saved.scene > 0) {
+      showScene(saved.scene, { skipConfetti: true });
+    }
+  }
+  if (window.claude && window.claude.hot) {
+    window.claude.hot.snapshot(function () { return { scene: current }; });
+    window.claude.hot.ready ? window.claude.hot.ready(start) : start(window.claude.hot.data || {});
+  }
+})();
+</script>
+
+</body></html>
