@@ -2,13 +2,6 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <title>Papi Uno's Birthday Story</title>
 <style>
-  /*
-    Layout concept: one full-height "stage" that swaps between seven
-    scenes (seal -> distance -> the dare -> why he's special -> our
-    memories -> through the years -> the reveal). Egypt's gold and
-    Indonesia's rose sit together on a charcoal ground; grey marks
-    anything that's "his", pink marks anything that's "hers".
-  */
   :root {
     --bg: #1a1720;
     --bg-deep: #100e15;
@@ -155,9 +148,6 @@
   .bear-hug svg { width: 64px; height: 76px; }
   .bear-hug svg:first-child { margin-right: -14px; transform: rotate(-4deg); }
   .bear-hug svg:last-child { margin-left: -14px; transform: rotate(4deg); }
-  @media (prefers-reduced-motion: reduce) {
-    .bear-bounce, .bear-bounce.delay { animation: none; }
-  }
 
   /* ---------- s2: the dare ---------- */
   .question { font-size: clamp(34px, 11vw, 48px); color: var(--text); line-height: 1.1; }
@@ -205,16 +195,12 @@
     justify-content: center; gap: 8px; border: 1px solid var(--line);
   }
   .flip-front {
-    background:
-      repeating-linear-gradient(0deg, rgba(122,92,47,0.08) 0px, rgba(122,92,47,0.08) 1px, transparent 1px, transparent 5px),
-      repeating-linear-gradient(90deg, rgba(122,92,47,0.05) 0px, rgba(122,92,47,0.05) 1px, transparent 1px, transparent 7px),
-      linear-gradient(160deg, #e9d9b3, #d9c190);
+    background: linear-gradient(160deg, #e9d9b3, #d9c190);
     align-items: center; text-align: center; color: #4a3a22;
     border-color: rgba(122,92,47,0.35);
   }
   .flip-front .num { font-family: var(--font-display); font-size: 34px; color: #7a5c2f; }
   .flip-front .hint { font-size: 12px; color: #6b5a3c; }
-  .flip-front .pyramid { width: 46px; height: 32px; opacity: 0.75; }
   .flip-back {
     background: linear-gradient(160deg, var(--pink-soft), #e3b2c5);
     color: #2a1018; transform: rotateY(180deg);
@@ -237,7 +223,7 @@
     transform: rotate(var(--tilt, -2deg));
   }
   .polaroid img {
-    width: 100%; height: 230px; object-fit: var(--fit, cover);
+    width: 100%; height: 230px; object-fit: cover;
     background: #efe7d6; border-radius: 2px; display: block;
   }
   .polaroid figcaption {
@@ -268,14 +254,7 @@
     color: var(--bg-deep); background: var(--gold); border: none;
     border-radius: 999px; padding: 10px 20px; cursor: pointer;
   }
-  .again-btn:focus-visible { outline: 3px solid var(--pink); outline-offset: 2px; }
-
   #confetti { position: fixed; inset: 0; z-index: 3; pointer-events: none; }
-
-  @media (prefers-reduced-motion: reduce) {
-    .heart { animation: none; opacity: 0.2; bottom: 10%; }
-    section.scene { animation: none; }
-  }
 </style>
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -284,15 +263,12 @@
 <div id="hearts" aria-hidden="true"></div>
 
 <div class="stage">
-
-  <!-- s0 : seal -->
   <section class="scene" id="s0">
     <p class="eyebrow">A story, just for you</p>
     <button id="seal-btn" type="button">Open for<br>Papi Uno</button>
     <p class="seal-sub">Six chapters. One very special birthday.</p>
   </section>
 
-  <!-- s1 : distance -->
   <section class="scene" id="s1" hidden>
     <p class="eyebrow">Chapter One</p>
     <h2>Two Countries, One Heart</h2>
@@ -306,15 +282,9 @@
       Somehow it has never once felt like a distance —
       it just feels like <strong>home, twice.</strong>
     </p>
-    <div class="pyramid-row" aria-hidden="true">
-      <svg viewBox="0 0 60 40"><polygon points="30,2 56,38 4,38" fill="var(--gold)"/><polygon points="30,2 56,38 30,38" fill="var(--gold-soft)" opacity="0.5"/></svg>
-      <svg viewBox="0 0 60 40"><polygon points="30,10 50,38 10,38" fill="var(--gold-soft)" opacity="0.7"/></svg>
-      <svg viewBox="0 0 60 40"><polygon points="30,2 56,38 4,38" fill="var(--gold)"/><polygon points="30,2 56,38 30,38" fill="var(--gold-soft)" opacity="0.5"/></svg>
-    </div>
     <div class="bear-duo" id="bear-duo-distance" aria-hidden="true"></div>
   </section>
 
-  <!-- s2 : the dare -->
   <section class="scene" id="s2" hidden>
     <p class="eyebrow">Chapter Two</p>
     <h2 class="question">Do you love me?</h2>
@@ -326,7 +296,6 @@
     <p class="dare-counter" id="dare-counter"></p>
   </section>
 
-  <!-- s3 : why special -->
   <section class="scene" id="s3" hidden>
     <p class="eyebrow">Chapter Three</p>
     <h2>Why You, Papi Uno</h2>
@@ -334,7 +303,6 @@
     <p class="deck-hint">tap a card to reveal</p>
   </section>
 
-  <!-- s4 : our memories -->
   <section class="scene" id="s4" hidden>
     <p class="eyebrow">Chapter Four</p>
     <h2>Our Memories</h2>
@@ -343,123 +311,6 @@
     <p class="swipe-hint">swipe for more &#8594;</p>
   </section>
 
-  <!-- s5 : through the years -->
   <section class="scene" id="s5" hidden>
-    <p class="eyebrow">Chapter Five</p>
-    <h2>Through the Years</h2>
-    <p class="gallery-title">From a little boy in Egypt to the man I fell for.</p>
-    <div class="gallery" id="gallery-years"></div>
-    <p class="swipe-hint">swipe for more &#8594;</p>
-  </section>
-
-  <!-- s6 : the reveal -->
-  <section class="scene" id="s6" hidden>
-    <article class="party-card">
-      <p class="eyebrow" style="color:var(--pink-soft)">Chapter Six</p>
-      <h2 class="party-title">Happy Birthday,<br>Papi Uno</h2>
-      <div class="bear-hug" id="bear-hug-reveal" aria-hidden="true"></div>
-      <p class="arabic-line">كل سنة وإنت طيب يا حبيبي</p>
-      <p class="id-line">Selamat ulang tahun, sayangku.</p>
-      <p class="party-note">
-        You're the <strong>calm, wise</strong> one in every storm —
-        the kind of man my family already adores, because somehow your
-        heart beats on the same wavelength as theirs. You make me laugh
-        when I least expect it, you're effortlessly <strong>cool</strong>
-        without ever trying, and you show affection so openly that I
-        never once feel like I'm loving you alone. And yes — you spoil
-        me rotten. I'm not even a little sorry about enjoying it.
-      </p>
-      <p class="dua-line">
-        Semoga Allah selalu menjaga langkahmu, memudahkan setiap rencanamu,
-        dan memberimu umur yang panjang penuh berkah. اللهم بارك له في عمره
-        وارزقه الصحة والسعادة. I pray every year gets softer and kinder
-        for you — I plan on being there for all of them.
-      </p>
-      <p class="signoff">All my love, always yours, Amelia.</p>
-      <button class="again-btn" id="replay-btn" type="button">Read it again</button>
-    </article>
-  </section>
-
-</div>
-
-<button class="nav-next" id="nav-next" type="button" aria-label="Next">&#8594;</button>
-<div class="dots" id="dots"></div>
-<canvas id="confetti"></canvas>
-
-<script>
-(function () {
-  "use strict";
-  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  var scenes = ["s0","s1","s2","s3","s4","s5","s6"];
-  var current = 0;
-  var navNext = document.getElementById("nav-next");
-  var dotsWrap = document.getElementById("dots");
-
-  scenes.forEach(function () {
-    var d = document.createElement("span");
-    dotsWrap.appendChild(d);
-  });
-
-  function renderDots() {
-    Array.prototype.forEach.call(dotsWrap.children, function (d, i) {
-      d.className = i === current ? "active" : "";
-    });
-  }
-
-  function showScene(i, opts) {
-    opts = opts || {};
-    document.getElementById(scenes[current]).hidden = true;
-    current = i;
-    document.getElementById(scenes[current]).hidden = false;
-    renderDots();
-    navNext.hidden = (scenes[current] === "s2" || scenes[current] === "s6");
-    if (scenes[current] === "s6" && !opts.skipConfetti) burstConfetti();
-  }
-
-  navNext.addEventListener("click", function () {
-    if (current < scenes.length - 1) showScene(current + 1);
-  });
-
-  document.getElementById("seal-btn").addEventListener("click", function () {
-    showScene(1);
-  });
-
-  /* ---------- ambient hearts ---------- */
-  (function spawnHearts() {
-    var layer = document.getElementById("hearts");
-    var count = reduceMotion ? 6 : 12;
-    for (var i = 0; i < count; i++) {
-      var h = document.createElement("div");
-      h.className = "heart";
-      h.textContent = ["♥", "✿", "▲"][(Math.random() * 3) | 0];
-      h.style.left = (Math.random() * 100) + "%";
-      h.style.fontSize = (12 + Math.random() * 14) + "px";
-      if (!reduceMotion) {
-        h.style.animationDuration = (10 + Math.random() * 10) + "s";
-        h.style.animationDelay = (-Math.random() * 14) + "s";
-      }
-      layer.appendChild(h);
-    }
-  })();
-
-  /* ---------- s2: the unreachable "No" ---------- */
-  var field = document.getElementById("dare-field");
-  var noBtn = document.getElementById("no-btn");
-  var yesBtn = document.getElementById("yes-btn");
-  var taunt = document.getElementById("taunt");
-  var counterEl = document.getElementById("dare-counter");
-  var dodgeCount = 0;
-
-  var taunts = [
-    "Nggak bisa kabur, kamu cuma boleh pencet Ya, Papi Uno.",
-    "Not today. Only Yes is allowed here.",
-    "Nice try. Still unclickable.",
-    "That button is purely decorative at this point.",
-    "Nope. Try the other one.",
-    "Some things just aren't up for debate."
-  ];
-
-  function randomSpot() {
-    var w = field.clientWidth
-        
+    <p class="eyeb
+      
